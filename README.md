@@ -1,0 +1,42 @@
+# Book.js
+React component for displaying 3D book UI elements. Can leverage the [Open Library](https://openlibrary.org/) APIs for book data, or provide your own book cover URLs. GSAP animation on click or tab.
+
+<img width="917" alt="Screen Shot 2023-10-06 at 1 13 55 AM" src="https://github.com/tannerdolby/eleventy-plugin-metagen/assets/48612525/54f1c51c-120a-487f-a023-d1394354ddd5">
+
+
+## Examples
+Leveraging Open Library book data:
+
+```js
+import {Book} from 'book.js';
+
+function App({}) {
+  return (
+    <Book
+      book={{
+        title: "The Hitch Hiker's Guide to the Galaxy",
+        id: 11464254,
+        key: "id",
+        size: "L"
+      }}
+    />
+  )
+}
+```
+
+Or by providing your own book cover images:
+
+```js
+import {Book} from 'book.js';
+
+function App({}) {
+  return (
+    <Book
+      book={{
+        title: "Archimedean Spiral",
+        coverUrl: "https://tannerdolby.com/images/arc-spiral-large-640.jpeg"
+      }}
+    />
+  )
+}
+```

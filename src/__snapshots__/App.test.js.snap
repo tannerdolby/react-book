@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders app matches snapshot 1`] = `
+<div>
+  <div
+    class="app"
+  >
+    <div
+      class="book-demo"
+    >
+      <div
+        class="book cube"
+      >
+        <div
+          class="cube front face"
+        />
+        <div
+          class="cube back face"
+        />
+        <div
+          class="cube right face"
+        />
+        <div
+          class="cube left face"
+        />
+        <div
+          class="cube top face"
+          style="background-image: url();"
+        />
+        <div
+          class="cube bottom face"
+        />
+        <div
+          class="cube shadow"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
