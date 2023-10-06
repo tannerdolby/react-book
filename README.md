@@ -8,7 +8,7 @@ Reusable component for displaying 3D book UI elements. Users can leverage the [O
 Leveraging Open Library book data:
 
 ```js
-import {Book} from 'book.js';
+import Book from './components/Book';
 
 function App({}) {
   return (
@@ -26,7 +26,7 @@ function App({}) {
 Or by providing your own book cover images:
 
 ```js
-import {Book} from 'book.js';
+import Book from './components/Book';
 
 function App({}) {
   return (
