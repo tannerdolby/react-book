@@ -4,14 +4,12 @@ export default class OpenLibrary {
   }
 
   async getCover(book) {
-    if (!book || !book.key || !book.id || !book.size) {
+    if (!book || !book.id || !book.size) {
       return '';
     }
 
-    const {key, id, size} = book;
-
     try {
-      const apiUrl = `${this.baseUrl}/b/${key}/${id}-${size}.jpg`;
+      const apiUrl = `${this.baseUrl}/b/id/${book.id}-${book.size || 'L'}.jpg`;
       const response = await fetch(apiUrl);
       if (response && response.status === 200) {
         return response.url;
