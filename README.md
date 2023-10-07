@@ -10,7 +10,7 @@ Leveraging Open Library book data:
 ```js
 import Book from './components/Book';
 
-function App({}) {
+function App() {
   return (
     <Book
       book={{
@@ -28,7 +28,7 @@ Or by providing your own book cover images:
 ```js
 import Book from './components/Book';
 
-function App({}) {
+function App() {
   return (
     <Book
       book={{
