@@ -18,8 +18,7 @@ function App() {
         size: "L"
       }}
     />
-    {/* 
-Or by providing your own book cover images */}
+    {/* Or by providing your own book cover images */}
     <Book
       book={{
         title: "Archimedean Spiral",
