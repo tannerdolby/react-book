@@ -5,13 +5,12 @@ Reusable component for displaying 3D book UI elements. Users can leverage the [O
 
 
 ## Examples
-Leveraging Open Library book data:
-
 ```js
 import Book from './components/Book';
 
 function App() {
   return (
+    {/* Leveraging Open Library book data */}
     <Book
       book={{
         title: "The Hitch Hiker's Guide to the Galaxy",
@@ -19,17 +18,8 @@ function App() {
         size: "L"
       }}
     />
-  )
-}
-```
-
-Or by providing your own book cover images:
-
-```js
-import Book from './components/Book';
-
-function App() {
-  return (
+    {/* 
+Or by providing your own book cover images */}
     <Book
       book={{
         title: "Archimedean Spiral",
