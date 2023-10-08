@@ -10,7 +10,7 @@ import Book from './components/Book';
 
 function App() {
   return (
-    {/* Leveraging Open Library book data */}
+    {/* Using Open Library book data */}
     <Book
       book={{
         title: "The Hitch Hiker's Guide to the Galaxy",
