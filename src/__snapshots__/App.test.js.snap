@@ -8,27 +8,34 @@ exports[`renders app matches snapshot 1`] = `
     <div
       class="book-demo"
     >
+      <button
+        class="next-btn"
+      >
+        View Next Cover
+      </button>
       <div
         class="book cube"
+        tabindex="0"
+        title="The Hitch Hiker's Guide to the Galaxy"
       >
         <div
-          class="cube front face"
+          class="cube front"
         />
         <div
-          class="cube back face"
+          class="cube back"
         />
         <div
-          class="cube right face"
+          class="cube right"
         />
         <div
-          class="cube left face"
+          class="cube left"
         />
         <div
-          class="cube top face"
-          style="background-image: url();"
+          class="cube top"
+          style="background-image: url(https://tannerdolby.com/images/arc-spiral-large-640.jpeg);"
         />
         <div
-          class="cube bottom face"
+          class="cube bottom"
         />
         <div
           class="cube shadow"

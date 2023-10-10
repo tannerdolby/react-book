@@ -3,17 +3,19 @@ import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import OpenLibrary from '../open-library/OpenLibrary';
 
-export default function Book({ book }) {
-  const [cover, setCover] = useState('');
+export default function Book({ title, openLibraryId, coverUrl, coverSize}) {
+  const [cover, setCover] = useState(coverUrl);
   const [hasInteraction, setHasInteraction] = useState(false);
   const [tween, setTween] = useState(null);
   const bookRef = useRef(null);
 
   useEffect(() => {
-    const openLibrary = new OpenLibrary();
     (async () => {
-      const coverUrl = await openLibrary.getCover(book);
-      setCover(coverUrl || book.coverUrl);
+      const openLibrary = new OpenLibrary();
+      if (openLibraryId) {
+        const openLibraryCover = await openLibrary.getCover(openLibraryId, coverSize);
+        setCover(openLibraryCover);
+      }
     })();
   });
 
@@ -35,7 +37,7 @@ export default function Book({ book }) {
     <div
       className='book cube'
       ref={bookRef}
-      title={book.title}
+      title={title}
       tabIndex={0}
       onClick={(e) => {
         handleInteraction(hasInteraction, tween, setHasInteraction);

@@ -12,18 +12,13 @@ function App() {
   return (
     {/* Using Open Library book data */}
     <Book
-      book={{
-        title: "The Hitch Hiker's Guide to the Galaxy",
-        id: 11464254,
-        size: "L"
-      }}
+      title="The Hitch Hiker's Guide to the Galaxy"
+      openLibraryId={11464254}
     />
     {/* Or by providing your own book cover images */}
     <Book
-      book={{
-        title: "Archimedean Spiral",
-        coverUrl: "https://tannerdolby.com/images/arc-spiral-large-640.jpeg"
-      }}
+      title="Archimedean Spiral"
+      coverUrl="https://tannerdolby.com/images/arc-spiral-large-640.jpeg"
     />
   )
 }

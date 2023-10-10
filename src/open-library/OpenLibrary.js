@@ -3,13 +3,13 @@ export default class OpenLibrary {
     this.baseUrl = 'https://covers.openlibrary.org';
   }
 
-  async getCover(book) {
-    if (!book || !book.id || !book.size) {
+  async getCover(id, size='L') {
+    if (!id) {
       return '';
     }
 
     try {
-      const apiUrl = `${this.baseUrl}/b/id/${book.id}-${book.size || 'L'}.jpg`;
+      const apiUrl = `${this.baseUrl}/b/id/${id}-${size}.jpg`;
       const response = await fetch(apiUrl);
       if (response && response.status === 200) {
         return response.url;

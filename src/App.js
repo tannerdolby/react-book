@@ -21,7 +21,11 @@ function App() {
         >
           View Next Cover
         </button>
-        <Book book={book} />
+        <Book
+          title={book.title}
+          openLibraryId={book.id}
+          coverUrl={book.coverUrl}
+        />
       </div>
     </div>
   );
