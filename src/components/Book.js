@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import OpenLibrary from '../open-library/OpenLibrary';
 
 export default function Book({ title, openLibraryId, coverUrl, coverSize}) {
-  const [cover, setCover] = useState(coverUrl);
+  const [cover, setCover] = useState('');
   const [hasInteraction, setHasInteraction] = useState(false);
   const [tween, setTween] = useState(null);
   const bookRef = useRef(null);
@@ -14,7 +14,7 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize}) {
       const openLibrary = new OpenLibrary();
       if (openLibraryId) {
         const openLibraryCover = await openLibrary.getCover(openLibraryId, coverSize);
-        setCover(openLibraryCover);
+        setCover(openLibraryCover.url);
       }
     })();
   });
@@ -54,7 +54,7 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize}) {
       <div className='cube left'></div>
       <div
         className='cube top'
-        style={{ backgroundImage: `url(${cover})` }}
+        style={{ backgroundImage: `url(${cover || coverUrl})` }}
       ></div>
       <div className='cube bottom'></div>
       <div className='cube shadow'></div>

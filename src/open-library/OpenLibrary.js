@@ -3,17 +3,15 @@ export default class OpenLibrary {
     this.baseUrl = 'https://covers.openlibrary.org';
   }
 
-  async getCover(id, size='L') {
-    if (!id) {
+  async getCover(openLibraryId, size='L') {
+    if (!openLibraryId) {
       return '';
     }
 
     try {
-      const apiUrl = `${this.baseUrl}/b/id/${id}-${size}.jpg`;
-      const response = await fetch(apiUrl);
-      if (response && response.status === 200) {
-        return response.url;
-      }
+      const asset = `${openLibraryId}-${size}.jpg`;
+      const apiUrl = `${this.baseUrl}/b/olid/${asset}`;
+      return await fetch(apiUrl);
     } catch (err) {
       throw err;
     }
@@ -22,8 +20,7 @@ export default class OpenLibrary {
   async getCovers(coversObjList) {
     let covers = [];
     for (const cover of coversObjList) {
-      const { key, id, size } = cover;
-      covers.push(await this.getCover(key, id, size));
+      covers.push(await this.getCover(cover.id, cover.size));
     }
     return covers;
   }

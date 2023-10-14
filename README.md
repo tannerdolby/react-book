@@ -10,12 +10,12 @@ import Book from './components/Book';
 
 function App() {
   return (
-    {/* Using Open Library book data */}
+    {/* Use Open Library book data */}
     <Book
       title="The Hitch Hiker's Guide to the Galaxy"
       openLibraryId={11464254}
     />
-    {/* Or by providing your own book cover images */}
+    {/* Provide your own book cover images */}
     <Book
       title="Archimedean Spiral"
       coverUrl="https://tannerdolby.com/images/arc-spiral-large-640.jpeg"

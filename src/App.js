@@ -24,7 +24,6 @@ function App() {
         <Book
           title={book.title}
           openLibraryId={book.id}
-          coverUrl={book.coverUrl}
         />
       </div>
     </div>
