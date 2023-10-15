@@ -1,23 +1,12 @@
 import '../css/index.css';
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import OpenLibrary from '../open-library/OpenLibrary';
 
 export default function Book({ title, openLibraryId, coverUrl, coverSize}) {
-  const [cover, setCover] = useState('');
   const [hasInteraction, setHasInteraction] = useState(false);
   const [tween, setTween] = useState(null);
   const bookRef = useRef(null);
-
-  useEffect(() => {
-    (async () => {
-      const openLibrary = new OpenLibrary();
-      if (openLibraryId) {
-        const openLibraryCover = await openLibrary.getCover(openLibraryId, coverSize);
-        setCover(openLibraryCover.url);
-      }
-    })();
-  });
+  const cover = getCover(openLibraryId, coverSize, coverUrl);
 
   useEffect(() => {
     setTween(gsap.to(bookRef.current, {
@@ -54,7 +43,7 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize}) {
       <div className='cube left'></div>
       <div
         className='cube top'
-        style={{ backgroundImage: `url(${cover || coverUrl})` }}
+        style={{ backgroundImage: `url(${cover})` }}
       ></div>
       <div className='cube bottom'></div>
       <div className='cube shadow'></div>
@@ -68,4 +57,13 @@ function handleInteraction(hasInteraction, tween, setHasInteraction) {
     tween.reverse();
   }
   setHasInteraction(!hasInteraction);
+}
+
+function getCover(openLibraryId, coverSize, coverUrl) {
+  const baseUrl = 'https://covers.openlibrary.org';
+  if (openLibraryId) {
+    return `${baseUrl}/b/olid/${openLibraryId}-${coverSize || 'L'}.jpg`;
+  } else {
+    return coverUrl;
+  }
 }

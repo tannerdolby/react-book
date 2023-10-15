@@ -32,7 +32,7 @@ exports[`renders app matches snapshot 1`] = `
         />
         <div
           class="cube top"
-          style="background-image: url(undefined);"
+          style="background-image: url(https://covers.openlibrary.org/b/olid/OL32832269M-L.jpg);"
         />
         <div
           class="cube bottom"
