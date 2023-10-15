@@ -15,7 +15,7 @@ function App() {
     {/* Use Open Library book data */}
     <Book
       title="The Hitch Hiker's Guide to the Galaxy"
-      openLibraryId='OL32832269M'
+      openLibraryId="OL32832269M"
     />
     {/* Provide your own book cover images */}
     <Book
