@@ -8,7 +8,7 @@ To find a specific book cover, search by title on the Open Library website and g
 
 ## Examples
 ```js
-import Book from './components/Book';
+import Book from "./components/Book";
 
 function App() {
   return (
