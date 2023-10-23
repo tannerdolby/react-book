@@ -16,7 +16,7 @@ const boilerplate = `
 const head = metagen({
   title: 'Book.js',
   desc: 'Reusable 3D Book Component with GSAP animation',
-  url: 'https://tannerdolby.com',
+  url: 'https://extraordinary-kheer-4bd56b.netlify.app',
   img: 'https://user-images.githubusercontent.com/48612525/273147153-54f1c51c-120a-487f-a023-d1394354ddd5.png',
   img_alt: 'Demo image of book component displaying Hitchiker\' Guide to the Galaxy',
   twitter_card_type: 'summary_large_image',
