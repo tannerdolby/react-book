@@ -27,6 +27,6 @@ const head = metagen({
 
 const content = boilerplate.replace('<!-- {% metagen %} -->', head);
 
-fs.writeFile('./public/index.html', (content), (err) => {
+fs.writeFile('./public/index.html', (content.trim()), (err) => {
   if (err) throw err;
 });
