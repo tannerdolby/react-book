@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "sass": "sass ./src/scss/index.scss ./src/css/index.css",
-    "build:sass": "npm run sass && react-scripts build",
+    "build:sass": "npm run sass && npm run build",
     "sass:watch": "sass --watch ./src/scss/index.scss ./src/css/index.css",
     "eject": "react-scripts eject"
   },

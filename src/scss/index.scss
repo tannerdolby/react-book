@@ -159,7 +159,7 @@ body {
     width: math.div($cube-w, 1.54);
     height: $cube-h * 8.45;
     border-radius: 1px;
-    border: calc(var(--b) * 1vmin) solid #333
+    border: calc(var(--b) * 1vmin) solid #333;
   }
 
   &.back {
