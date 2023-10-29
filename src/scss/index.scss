@@ -154,6 +154,7 @@ body {
     --b: .6;
     transform: rotate(90deg) translateZ(3vw);
     background-size: 100% 100%;
+    background-color: #000;
     top: -50.5%;
     left: 51%;
     width: math.div($cube-w, 1.54);
