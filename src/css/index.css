@@ -179,5 +179,9 @@ body {
 .cube:hover {
   cursor: pointer;
 }
+.cube .cover-img {
+  width: 100%;
+  height: 100%;
+}
 
 /*# sourceMappingURL=index.css.map */

@@ -2,11 +2,11 @@ import '../css/index.css';
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-export default function Book({ title, openLibraryId, coverUrl, coverSize}) {
+export default function Book({ title, openLibraryId, coverUrl, coverSize }) {
   const [hasInteraction, setHasInteraction] = useState(false);
   const [tween, setTween] = useState(null);
   const bookRef = useRef(null);
-  const cover = getCover(openLibraryId, coverSize, coverUrl);
+  const [cover, setCover] = useState('');
 
   useEffect(() => {
     setTween(gsap.to(bookRef.current, {
@@ -22,13 +22,21 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize}) {
     }))
   }, [bookRef])
 
+  useEffect(() => {
+    setCover(getCover(openLibraryId, coverSize, coverUrl))
+  }, [openLibraryId, coverSize, coverUrl]);
+
+  if (!cover) {
+    return '';
+  }
+
   return (
     <div
       className='book cube'
       ref={bookRef}
       title={title}
       tabIndex={0}
-      onClick={(e) => {
+      onClick={() => {
         handleInteraction(hasInteraction, tween, setHasInteraction);
       }}
       onKeyDown={(e) => {
@@ -41,10 +49,15 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize}) {
       <div className='cube back'></div>
       <div className='cube right'></div>
       <div className='cube left'></div>
-      <div
-        className='cube top'
-        style={{ backgroundImage: `url(${cover})` }}
-      ></div>
+      <div className='cube top'>
+        <img
+          className='cover-img'
+          width={50}
+          height={50}
+          src={cover}
+          alt={`Book cover for ${title}`}
+        />
+      </div>
       <div className='cube bottom'></div>
       <div className='cube shadow'></div>
     </div>
