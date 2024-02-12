@@ -62,6 +62,7 @@ function handleInteraction(bookRef, hasInteraction, setHasInteraction) {
   }).play()
 
   if (hasInteraction) {
+    // TODO: animate back to original position
     gsap.to(bookRef.current, {
       rotateY: 40,
       rotateX: 30,
