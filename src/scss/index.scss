@@ -11,7 +11,7 @@ $cube-z: 8vw;
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 2rem 2rem 15rem 2rem;
   background: #F7F1EA;
   overflow-x: hidden;
 }
@@ -123,18 +123,19 @@ body {
   &.front, &.back,
   &.right, &.left,
   &.top, &.bottom {
-    background-color: #fff;
+    background-color: #111;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
  }
   
- &.left {
+ &.left,
+ &.right {
     --b: .5;
-    border-bottom: 3px solid #333;
-    border-bottom: calc(var(--b) * 1vmin) solid #333;
-    border-left: 3px solid #333;
-    border-left: calc(var(--b) * 1vmin) solid #333;
+    border-bottom: 3px solid #111;
+    border-bottom: calc(var(--b) * 1vmin) solid #111;
+    border-left: 3px solid #111;
+    border-left: calc(var(--b) * 1vmin) solid #111;
     border-right: none;
     background: repeating-linear-gradient(to bottom, #eee 30%, #AAA 32%);
     background: repeating-linear-gradient(to bottom, #eee 20%, #ccc 32%);
@@ -142,10 +143,10 @@ body {
   }
   
   &.front,
-  &.back {
+  &.bottom {
     --b: .6;
-    border-bottom: 3px solid #333;
-    border-bottom: calc(var(--b) * 1vmin) solid #333;
+    border-bottom: 3px solid #111;
+    border-bottom: calc(var(--b) * 1vmin) solid #111;
     background: repeating-linear-gradient(to bottom, #fff 30%, #ddd 32%);
     background: repeating-linear-gradient(to bottom, #eee 20%, #bbb 40%);
   }
@@ -154,17 +155,17 @@ body {
     --b: .6;
     transform: rotate(90deg) translateZ(3vw);
     background-size: 100% 100%;
-    background-color: #000;
+    background-color: #111;
     top: -50.5%;
     left: 51%;
     width: math.div($cube-w, 1.54);
     height: $cube-h * 8.45;
     border-radius: 1px;
-    border: calc(var(--b) * 1vmin) solid #333;
+    border: calc(var(--b) * 1vmin) solid #111;
   }
 
   &.back {
-    background: black;
+    background: #111;
   }
 
   &:hover {
@@ -174,5 +175,18 @@ body {
   .cover-img {
     width: 100%;
     height: 100%;
+  }
+}
+
+.book-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  flex-wrap: wrap;
+  row-gap: 16rem;
+
+  li {
+    margin: 1rem;
   }
 }
