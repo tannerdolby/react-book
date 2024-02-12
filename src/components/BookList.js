@@ -1,6 +1,6 @@
 import Book from "./Book";
 
-export default function BookList({}) {
+export default function BookList() {
     return (
         <ul className="book-list">
           {BOOK_LIST.map((book, i) => {
