@@ -4,23 +4,8 @@ import gsap from 'gsap';
 
 export default function Book({ title, openLibraryId, coverUrl, coverSize }) {
   const [hasInteraction, setHasInteraction] = useState(false);
-  const [tween, setTween] = useState(null);
-  const bookRef = useRef(null);
   const [cover, setCover] = useState('');
-
-  useEffect(() => {
-    setTween(gsap.to(bookRef.current, {
-      rotateY: -10,
-      rotateX: -5,
-      rotateZ: -90,
-      translateZ: 50,
-      y: -30,
-      duration: .7,
-      yoyo: true,
-      paused: true,
-      zIndex: 99
-    }))
-  }, [bookRef])
+  const bookRef = useRef(null);
 
   useEffect(() => {
     setCover(getCover(openLibraryId, coverSize, coverUrl))
@@ -36,12 +21,12 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize }) {
       ref={bookRef}
       title={title}
       tabIndex={0}
-      onClick={() => {
-        handleInteraction(hasInteraction, tween, setHasInteraction);
+      onClick={(e) => {
+        handleInteraction(bookRef, hasInteraction, setHasInteraction);
       }}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          handleInteraction(hasInteraction, tween, setHasInteraction);
+          handleInteraction(bookRef, hasInteraction, setHasInteraction);
         }
       }}
     >
@@ -64,11 +49,32 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize }) {
   );
 }
 
-function handleInteraction(hasInteraction, tween, setHasInteraction) {
-  tween.play();
+function handleInteraction(bookRef, hasInteraction, setHasInteraction) {
+  gsap.to(bookRef.current, {
+    rotateY: -10,
+    rotateX: -5,
+    rotateZ: -90,
+    translateZ: 50,
+    y: -30,
+    duration: .7,
+    yoyo: true,
+    zIndex: 99
+  }).play()
+
   if (hasInteraction) {
-    tween.reverse();
+    gsap.to(bookRef.current, {
+      rotateY: 40,
+      rotateX: 30,
+      rotateZ: -50,
+      translateZ: 10,
+      x: 10,
+      y: -5,
+      duration: .7,
+      yoyo: true,
+      zIndex: 99
+    }).play();
   }
+
   setHasInteraction(!hasInteraction);
 }
 
