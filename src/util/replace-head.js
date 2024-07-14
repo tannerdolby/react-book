@@ -1,15 +1,16 @@
-const fs = require('fs');
-const metagen = require('meta-generator');
+import fs from 'fs';
+import metagen from 'meta-generator';
 
 const boilerplate = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- {% metagen %} -->
+    {{ metagen }}
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>`;
 
@@ -25,8 +26,8 @@ const head = metagen({
   comments: true,
 }).join('\n');
 
-const content = boilerplate.replace('<!-- {% metagen %} -->', head);
+const content = boilerplate.replace('{{ metagen }}', head);
 
-fs.writeFile('./public/index.html', (content.trim()), (err) => {
+fs.writeFile('./index.html', (content.trim()), (err) => {
   if (err) throw err;
 });

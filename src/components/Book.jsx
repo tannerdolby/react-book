@@ -5,10 +5,10 @@ import gsap from 'gsap';
 export default function Book({ title, openLibraryId, coverUrl, coverSize }) {
   const [hasInteraction, setHasInteraction] = useState(false);
   const [cover, setCover] = useState('');
-  const bookRef = useRef(null);
+  const bookRef = useRef({});
 
   useEffect(() => {
-    setCover(getCover(openLibraryId, coverSize, coverUrl))
+    setCover(getCover(openLibraryId, coverSize, coverUrl));
   }, [openLibraryId, coverSize, coverUrl]);
 
   if (!cover) {
@@ -17,16 +17,18 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize }) {
 
   return (
     <div
-      className='book cube'
+      className={`book cube ${hasInteraction ? 'active' : ''}`.trim()}
       ref={bookRef}
       title={title}
       tabIndex={0}
       onClick={(e) => {
-        handleInteraction(bookRef, hasInteraction, setHasInteraction);
+        setHasInteraction(!hasInteraction);
+        handleInteraction(bookRef, hasInteraction);
       }}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          handleInteraction(bookRef, hasInteraction, setHasInteraction);
+          setHasInteraction(!hasInteraction);
+          handleInteraction(bookRef, hasInteraction);
         }
       }}
     >
@@ -37,8 +39,8 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize }) {
       <div className='cube top'>
         <img
           className='cover-img'
-          width={50}
-          height={50}
+          width={100}
+          height={100}
           src={cover}
           alt={`Book cover for ${title}`}
         />
@@ -49,20 +51,8 @@ export default function Book({ title, openLibraryId, coverUrl, coverSize }) {
   );
 }
 
-function handleInteraction(bookRef, hasInteraction, setHasInteraction) {
-  gsap.to(bookRef.current, {
-    rotateY: -10,
-    rotateX: -5,
-    rotateZ: -90,
-    translateZ: 50,
-    y: -30,
-    duration: .7,
-    yoyo: true,
-    zIndex: 99
-  }).play()
-
+function handleInteraction(bookRef, hasInteraction) {
   if (hasInteraction) {
-    // TODO: animate back to original position
     gsap.to(bookRef.current, {
       rotateY: 40,
       rotateX: 30,
@@ -73,10 +63,20 @@ function handleInteraction(bookRef, hasInteraction, setHasInteraction) {
       duration: .7,
       yoyo: true,
       zIndex: 99
-    }).play();
+    });
+  } else {
+    gsap.to(bookRef.current, {
+      rotateY: -10,
+      rotateX: -5,
+      rotateZ: -90,
+      translateZ: 50,
+      y: -30,
+      duration: .7,
+      yoyo: true,
+      zIndex: 99,
+      data: bookRef.current,
+    });
   }
-
-  setHasInteraction(!hasInteraction);
 }
 
 function getCover(openLibraryId, coverSize, coverUrl) {
